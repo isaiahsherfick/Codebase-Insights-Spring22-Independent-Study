@@ -1,0 +1,82 @@
+.page {
+  text-align: center;
+  text-justify: left;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 2%;
+}
+h1 {
+  color: red;
+}
+a {
+  cursor: pointer;
+}
+svg {
+  background-color: #dddddd;
+}
+line {
+  stroke: black;
+  fill-opacity: 100%;
+}
+text {
+  text-anchor: middle;
+}
+.sidePanel {
+  height: 600px;
+  width: 0px; /*updated by our js*/
+  position: fixed;
+  z-index: 1; /*keeps it on top of other content*/
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden; /*disables horizontal scrolling*/
+  padding-top: 60px;
+  transition: 0.25s;
+}
+
+.sidePanel .closeButton {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+.controlbtn {
+  /*style stuff*/
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #dddddd;
+  color: #222;
+  padding: 10px;
+  border: none;
+
+  /*centers the button within the div*/
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+li {
+  padding-left: 0px;
+  margin: 0px;
+}
+#filterButton, #clearAllFilters, #email{
+  padding: 2%;
+  margin: 2%;
+}

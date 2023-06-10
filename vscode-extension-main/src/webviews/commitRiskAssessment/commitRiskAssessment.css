@@ -1,0 +1,25 @@
+.page {
+    text-align: left;
+    text-justify: left;
+    padding: 10%;
+    padding-top: 2%;
+    align-items: left;
+}
+.inputSubmit {
+  background-color: #15bd15;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Trebuchet MS", sans-serif;
+  padding: 8px 24px 8px 24px;
+  border: 2px solid #0f960f;
+  border-radius: 16px;
+  display: table;
+  margin: 0 auto;
+}
+h4 {
+  text-align: center;
+}
+li {
+    text-align: left;
+}

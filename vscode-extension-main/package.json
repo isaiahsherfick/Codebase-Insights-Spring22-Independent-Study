@@ -1,0 +1,166 @@
+{
+  "name": "codebase-insights",
+  "displayName": "Codebase Insights",
+  "description": "Codebase Insights analyzes your codebase, provides compact data visualization for high-level overviews of your code, and allows you to garner insights for a deeper understanding of your codebase from a high level.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.62.0",
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.iu.edu/P532-Fall2021/vscode-extension/"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:codebaseInsightsTree",
+    "onCommand:codebase-insights.oauth"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codebase-insights.settings",
+        "title": "Open Codebase Insights Settings page",
+        "category": "Codebase Insight Tools"
+      },
+      {
+        "command": "codebase-insights.code-map",
+        "title": "Open Codebase Insights Code Map page",
+        "category": "Codebase Insight Tools"
+      },
+      {
+        "command": "codebase-insights.coauthorship-network",
+        "title": "Open Codebase Insights Coauthorship Network page",
+        "category": "Codebase Insight Tools"
+      },
+      {
+        "command": "codebase-insights.commit-risk-assessment",
+        "title": "Open Codebase Insights Commit Risk Assessment page",
+        "category": "Codebase Insight Tools"
+      },
+      {
+        "command": "codebase-insights.oauth",
+        "title": "Authenticate GitHub Access",
+        "category": "Codebase Insight Tools",
+        "scope": "application"
+      },
+      {
+        "command": "codebase-insights.loginSignup",
+        "title": "Open Codebase Insights Login / Signup page",
+        "category": "Codebase Insight Tools"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codebase-insights",
+          "title": "Codebase Insights",
+          "icon": "resources/owl_bulb.svg"
+        }
+      ]
+    },
+    "views": {
+      "codebase-insights": [
+        {
+          "id": "codebaseInsightsTree",
+          "name": "Navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Codebase Insights",
+      "properties": {
+        "codebase-insights.repoURL": {
+          "type": "string",
+          "default": "",
+          "description": "URL of the git repository to analyze"
+        },
+        "codebase-insights.branchName": {
+          "type": "string",
+          "default": "master",
+          "description": "The name of the GitHub branch to analyze"
+        },
+        "codebase-insights.githubActionsWorkflowId": {
+          "type": "string",
+          "default": "",
+          "description": "Workflow ID for Github Actions"
+        },
+        "codebase-insights.ciToolChosen": {
+          "type": "string",
+          "default": "NONE",
+          "description": "The name of the CI tool selected"
+        },
+        "codebase-insights.ciUsername": {
+          "type": "string",
+          "default": "",
+          "description": "Login information for the associated Jenkins instance"
+        },
+        "codebase-insights.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Password for the associated Jenkins instance"
+        },
+        "codebase-insights.jobUrl": {
+          "type": "string",
+          "default": "",
+          "description": "URL to the Jenkins instance, including the name of the job to analyze"
+        },
+        "codebase-insights.axiosUrl": {
+          "type": "string",
+          "default": "https://refactor-radar.herokuapp.com/api",
+          "description": "URL where the codebase insights service is running remotely. Pointed at our servers by default, but if you'd like to self-host for security purposes you can point the plugin at your deployment here."
+        },
+        "codebase-insights.filteredAuthors": {
+          "type": "string",
+          "default": "",
+          "description": "Author emails to be excluded from the coauthorship network"
+        },
+        "codebase-insights.personalAccessToken": {
+          "type": "string",
+          "default": "",
+          "description": "Personal access token to authenticate with your git repository"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "preprecompile": "npm run clean",
+    "precompile": "cpx \"src/**/*.{css,jpg,png,js}\" out ",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "prepackage": "npm run clean",
+    "package": "./node_modules/.bin/vsce package",
+    "clean": "rm -rf out"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.62.0",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "@typescript-eslint/parser": "^5.9.1",
+    "@vscode/test-electron": "^2.0.3",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.6.0",
+    "glob": "^7.2.0",
+    "mocha": "^9.2.0",
+    "style-loader": "^3.3.1",
+    "typescript": "^4.4.3",
+    "vsce": "^2.7.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cpx": "^1.5.0",
+    "cpx2": "^4.2.0",
+    "d3": "^7.3.0",
+    "simple-git": "^3.5.0",
+    "venn.js": "^0.2.20"
+  }
+}
